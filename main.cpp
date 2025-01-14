@@ -5,7 +5,7 @@ using namespace std;
 void displayHangman(int livesLeft);
 int stringLengthFinder(const char* str);
 void displayWord(const char guessedWord[], int length);
-int isWordGuessed(const char guessedWord[], const char orignalWord[], int length);
+bool isWordGuessed(const char guessedWord[], const char orignalWord[], int length);
 void displayAsciiArt();
 
 int main(){
@@ -22,7 +22,6 @@ int main(){
 	int livesLeft = maxAttempt;
 	char guessedLetter;
 	bool isTheGuessCorrect;
-	
 	while(livesLeft>0){
 		system("cls");
 		displayAsciiArt();
@@ -32,7 +31,7 @@ int main(){
 		
 		cout<<"Guessed a Letter: ";
 		cin>>guessedLetter;
-		
+		cin.ignore(1000, '\n');
 		if (guessedLetter>='a' && guessedLetter<='z'){
 			guessedLetter = guessedLetter - (32);
 		}
@@ -157,7 +156,7 @@ void displayWord(const char guessedWord[], int length){
 
 
 
-int isWordGuessed(const char guessedWord[], const char orignalWord[], int length){
+bool isWordGuessed(const char guessedWord[], const char orignalWord[], int length){
 {
 	for (int i = 0; i< length; i++){
 		if (orignalWord[i] != guessedWord[i]){
